@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AUVET - Documentação</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css" />
+  <link rel="stylesheet" href="./styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.$docsify = {
+      loadSidebar: true,
+      name: '<img src="./imagens/auvet-logo.png" alt="AUVET" style="height: 40px; margin-right: 10px; vertical-align: middle;"> AUVET',
+      repo: 'https://github.com/auvet/documentacao',
+      auto2top: true,
+      basePath: './',
+      coverpage: true,
+      executeScript: true,
+      maxLevel: 1,
+      alias: {
+      '/.*/_sidebar.md': '/_sidebar.md',
+      },
+      subMaxLevel: 3,
+      latex: {
+            inlineMath   : [['$', '$'], ['\\(', '\\)']], // default
+            displayMath  : [['$$', '$$']],               // default
+            customOptions: {}                            // default
+        },
+      sidebarDisplayLevel: 1,
+    }
+  </script>
+  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  
+  <!-- plugins -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/copy-code.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/external-link.min.js"></script>
+  
+  <!-- math -->
+  <script src="//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-latex@0"></script>
+
+  <style>
+    :root {
+        --base-font-size: 16px;
+        --theme-color   : #F87537;
+        --primary-color : #F87537;
+        --secondary-color: #FBA81F;
+    }
+    
+    body {
+        background-color: #f8f8f8 !important;
+    }
+    
+    /* Fundo branco para a coverpage */
+    .cover {
+        background-color: #ffffff !important;
+        background-image: none !important;
+        min-height: 100vh !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 2rem !important;
+    }
+    
+    .cover-main {
+        background-color: #ffffff !important;
+        padding: 2rem !important;
+        max-width: 800px !important;
+        text-align: center !important;
+    }
+    
+    /* Estilo para a coverpage */
+    .cover .cover-main {
+        color: #333333 !important;
+    }
+    
+    .cover .cover-main h1 {
+        background: linear-gradient(135deg, #F87537 0%, #FBA81F 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
+        text-shadow: none !important;
+        font-size: 3rem !important;
+        margin: 1rem 0 !important;
+        font-family: 'Poppins', 'Roboto', 'Helvetica Neue', Arial, sans-serif !important;
+        font-weight: 800 !important;
+        letter-spacing: -0.02em !important;
+    }
+    
+    .cover .cover-main p {
+        color: #555555 !important;
+        font-size: 1.4rem !important;
+        margin: 1rem 0 2rem 0 !important;
+        font-family: 'Poppins', sans-serif !important;
+    }
+    
+     .cover .cover-main img {
+         max-height: 200px !important;
+         width: auto !important;
+     }
+    
+    
+    /* Sidebar com cor principal */
+    .sidebar-nav > ul > li > a {
+        color: #F87537 !important;
+        border-radius: 6px !important;
+        margin: 2px 0 !important;
+        padding: 8px 12px !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .sidebar-nav > ul > li > a:hover {
+        background: linear-gradient(135deg, #F87537, #FBA81F) !important;
+        color: white !important;
+        transform: translateX(4px) !important;
+    }
+    
+    /* Links com cor principal */
+    a {
+        color: #F87537 !important;
+    }
+    
+    a:hover {
+        color: #FBA81F !important;
+    }
+    
+    /* Títulos com cor principal */
+    h1, h2, h3, h4, h5, h6 {
+        color: #F87537 !important;
+    }
+    
+    /* Botões com cor principal */
+    .btn {
+        background: linear-gradient(135deg, #F87537, #FBA81F) !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 8px !important;
+        padding: 12px 24px !important;
+        font-weight: 600 !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .btn:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 4px 12px rgba(248, 117, 55, 0.3) !important;
+    }
+    
+    /* Logo na barra de navegação */
+    .app-name-link {
+        border-radius: 8px !important;
+        transition: transform 0.3s ease !important;
+    }
+    
+    .app-name-link:hover {
+        transform: scale(1.05) !important;
+    }
+    
+    /* Melhorias gerais */
+    .sidebar {
+        background: #ffffff !important;
+        border-right: 1px solid #e0e0e0 !important;
+    }
+    
+    .content {
+        background: #ffffff !important;
+    }
+    
+    /* Scrollbar personalizada */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, #F87537, #FBA81F);
+        border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, #FBA81F, #F87537);
+    }
+  </style>
+</body>
+</html>
