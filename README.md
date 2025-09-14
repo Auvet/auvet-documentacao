@@ -1,132 +1,61 @@
-# AUVET - Documentação
+# AUVET
 
-Este é o repositório da documentação do projeto AUVET, um sistema de gerenciamento veterinário desenvolvido como parte da disciplina de TPPE (Técnicas de Programação e Projeto de Software) da Universidade de Brasília.
+> Gestão inteligente para clínicas veterinárias
 
-## 📋 Sobre o Projeto
+## Sobre o Sistema
 
-O AUVET é uma aplicação web desenvolvida para facilitar o gerenciamento de clínicas veterinárias, incluindo:
+O AUVET é uma aplicação web desenvolvida para facilitar a administração de clínicas veterinárias, centralizando em um só lugar o controle de pacientes, tutores, atendimentos e serviços.
 
-- Cadastro e gerenciamento de clientes e animais
-- Sistema de agendamento de consultas
-- Prontuário digital veterinário
-- Controle financeiro
-- Relatórios e analytics
+## Perfis de Usuário
 
-## 🚀 Como Executar a Documentação
+### Administrador
+O **Administrador** pode cadastrar sua clínica, gerenciar funcionários (veterinários e recepcionistas) e configurar os serviços oferecidos, como consultas, exames e vacinas.
 
-### Pré-requisitos
+### Funcionários
+Os **Funcionários** têm acesso a ferramentas para cadastrar tutores e animais, agendar consultas e registrar procedimentos e vacinas, garantindo que o histórico médico dos pets esteja sempre atualizado.
 
-- Python 3.8 ou superior
-- pip (gerenciador de pacotes Python)
+### Tutores
+Os **Tutores** conseguem acessar a aplicação com seu login e acompanhar de forma prática todas as informações relacionadas aos seus animais: histórico médico, vacinas aplicadas, dados cadastrais e próximos agendamentos.
 
-### Instalação
+## Benefícios
 
-1. Clone o repositório:
-```bash
-git clone <url-do-repositorio>
-cd auvet-documentacao
-```
+Com o AUVET, clínicas veterinárias ganham eficiência na organização interna e oferecem mais transparência e comodidade para os tutores, que passam a ter total controle sobre a saúde de seus animais.
 
-2. Instale as dependências:
-```bash
-pip install -r requirements.txt
-```
+## Funcionalidades Principais
 
-3. Execute o servidor de desenvolvimento:
-```bash
-mkdocs serve
-```
+- **Gestão de Clínicas**: Cadastro e configuração de clínicas veterinárias
+- **Controle de Funcionários**: Gerenciamento de veterinários e recepcionistas
+- **Cadastro de Pacientes**: Registro completo de tutores e animais
+- **Sistema de Agendamento**: Agendamento inteligente com lembretes
+- **Prontuário Digital**: Histórico médico completo e digitalizado
+- **Controle de Vacinação**: Gestão da carteira de vacinação
+- **Portal do Tutor**: Acesso completo aos dados dos animais
 
-4. Acesse a documentação em: http://127.0.0.1:8000
+## Tecnologias
 
-### Build para Produção
+- **Frontend**: React.js, TypeScript, Material-UI
+- **Backend**: Node.js, Express, TypeScript
+- **Banco de Dados**: PostgreSQL
+- **Autenticação**: JWT
+- **Deploy**: Docker, AWS
 
-Para gerar os arquivos estáticos da documentação:
+## Documentação
 
-```bash
-mkdocs build
-```
+Esta documentação contém todas as informações técnicas sobre o desenvolvimento do projeto AUVET, incluindo:
 
-Os arquivos serão gerados na pasta `site/`.
-
-## 📁 Estrutura do Projeto
-
-```
-auvet-documentacao/
-├── docs/                    # Páginas da documentação
-│   ├── index.md            # Página inicial
-│   ├── sobre.md            # Sobre o projeto
-│   ├── elicitacao.md       # Elicitação de requisitos
-│   ├── backlog.md          # Backlog do produto
-│   ├── modelagem.md        # Modelagem UML e EER
-│   ├── prototipo.md        # Protótipos de interface
-│   ├── arquitetura.md      # Arquitetura do sistema
-│   └── assets/             # Diagramas e imagens
-├── mkdocs.yml              # Configuração do MkDocs
-├── requirements.txt        # Dependências Python
-└── README.md              # Este arquivo
-```
-
-## 📚 Conteúdo da Documentação
-
-### 🏠 Início
-Página principal com visão geral do projeto e navegação.
-
-### 📖 Sobre o Projeto
-Informações detalhadas sobre objetivos, público-alvo, tecnologias e metodologia.
-
-### 👥 Elicitação de Requisitos
-Análise de requisitos baseada em personas, incluindo:
-- Dr. Carlos Veterinário
-- Maria Recepcionista
-- Ana Administradora
-- João Tutor
-
-### 📋 Backlog
-Lista detalhada de user stories organizadas por épicos e sprints.
-
-### 🏗️ Modelagem
-Diagramas UML e modelo de entidade-relacionamento (EER) do banco de dados.
-
-### 🎨 Protótipo
-Protótipos de interface e design system do projeto.
-
-### 🏛️ Arquitetura
-Documentação completa da arquitetura do sistema, incluindo:
-- Arquitetura frontend e backend
-- Estratégias de segurança
-- Deploy e monitoramento
-
-## 🛠️ Tecnologias Utilizadas
-
-- **MkDocs**: Gerador de documentação estática
-- **Material for MkDocs**: Tema moderno e responsivo
-- **Mermaid**: Diagramas renderizados em tempo real
-- **Python**: Runtime para o MkDocs
-
-## 📝 Como Contribuir
-
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
-3. Commit suas mudanças (`git commit -am 'Adiciona nova feature'`)
-4. Push para a branch (`git push origin feature/nova-feature`)
-5. Abra um Pull Request
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
-
-## 👥 Equipe
-
-- **Desenvolvedor Frontend**: [Nome]
-- **Desenvolvedor Backend**: [Nome]
-- **Designer UX/UI**: [Nome]
-- **Gerente de Projeto**: [Nome]
-
-## 📞 Contato
-
-Para dúvidas ou sugestões sobre a documentação, entre em contato através dos canais oficiais do projeto.
+- [Sobre o Projeto](pages/sobre.md) - Visão geral e objetivos
+- [Elicitação de Requisitos](pages/elicitacao.md) - Análise baseada em personas
+- [Backlog](pages/backlog.md) - User stories e sprints
+- [Modelagem](pages/modelagem.md) - Diagramas UML e EER
+- [Protótipo](pages/prototipo.md) - Interface e design system
+- [Arquitetura](pages/arquitetura.md) - Estrutura técnica
+- [Como Subir](pages/como-subir.md) - Guia de instalação
 
 ---
 
-**Universidade de Brasília - TPPE 2025.2**
+## Histórico de Versões
+
+| Versão | Data | Autor | Descrição |
+|--------|------|-------|-----------|
+| 1.0.0 | 2025-09-13 | Izabella Alves | Versão inicial da documentação com estrutura básica e funcionalidades principais |
+
