@@ -8,7 +8,7 @@ Esta seção apresenta os diagramas de modelagem do sistema AUVET, incluindo o d
 
 O diagrama de classes representa a estrutura estática do sistema, mostrando as classes principais e seus relacionamentos.
 
-![Diagrama de Classes AUVET](./imagens/diagrama-de-classes-auvet.png)
+![Diagrama de Classes AUVET](https://github.com/Auvet/auvet-documentacao/blob/master/docs/imagens/diagrama-de-classes-auvet.png?raw=true)
 
 ### Classes Principais
 
@@ -65,7 +65,7 @@ O sistema AUVET é composto pelas seguintes classes principais:
 
 O diagrama EER representa a estrutura do banco de dados, mostrando as tabelas, seus atributos e relacionamentos.
 
-![Diagrama EER AUVET](./imagens/eer-diagram-auvet.png)
+![Diagrama EER AUVET](https://github.com/Auvet/auvet-documentacao/blob/master/docs/imagens/eer-diagram-auvet.png?raw=true)
 
 ### Estrutura do Banco de Dados
 
