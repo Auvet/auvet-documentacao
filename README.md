@@ -33,22 +33,23 @@ Com o AUVET, clínicas veterinárias ganham eficiência na organização interna
 
 ## Tecnologias
 
-- **Frontend**: React.js, TypeScript, Material-UI
-- **Backend**: Node.js, Express, TypeScript
-- **Banco de Dados**: PostgreSQL
-- **Autenticação**: JWT
-- **Deploy**: Docker, AWS
+- **Frontend**: React 18, TypeScript, Mantine UI, React Router
+- **Backend**: Node.js, Express, TypeScript, Prisma ORM
+- **Banco de Dados**: MySQL
+- **Autenticação**: Serviço dedicado (Node.js) com JWT
+- **Build/Deploy**: Vite, Docker, Docker Compose, Render/Vercel
 
 ## Documentação
 
 Esta documentação contém todas as informações técnicas sobre o desenvolvimento do projeto AUVET, incluindo:
 
-- [Sobre o Projeto](pages/sobre.md) - Visão geral e objetivos
 - [Elicitação de Requisitos](pages/elicitacao.md) - Análise baseada em personas
 - [Backlog](pages/backlog.md) - User stories e sprints
 - [Modelagem](pages/modelagem.md) - Diagramas UML e EER
 - [Protótipo](pages/prototipo.md) - Interface e design system
-- [Arquitetura](pages/arquitetura.md) - Estrutura técnica
+- [Backend](pages/arquitetura-backend.md)
+- [Frontend](pages/arquitetura-frontend.md)
+- [Autenticação](pages/arquitetura-autenticacao.md)
 - [Como Subir](pages/como-subir.md) - Guia de instalação
 
 ---
@@ -58,4 +59,5 @@ Esta documentação contém todas as informações técnicas sobre o desenvolvim
 | Versão | Data | Autor | Descrição |
 |--------|------|-------|-----------|
 | 1.0.0 | 2025-09-13 | Izabella Alves | Versão inicial da documentação com estrutura básica e funcionalidades principais |
+| 1.1.0 | 2025-11-16 | Izabella Alves | Atualização da stack, links e guia de execução |
 
