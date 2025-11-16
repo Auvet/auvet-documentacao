@@ -1,91 +1,161 @@
-# Como subir o projeto
+# Como Subir o Projeto (Autenticação, Backend e Frontend)
 
-## Visão Geral
+Este guia mostra como executar os três serviços localmente (dev) e via Docker.
 
-O Auvet é um sistema de gerenciamento de clínicas veterinárias desenvolvido com Node.js, TypeScript, Express e Prisma ORM. Este tutorial irá guiá-lo através da instalação e configuração completa da aplicação.
+## Requisitos
+- Node.js 18+ e npm
+- Docker e Docker Compose
+- MySQL (opcional se usar Docker)
 
-## Stack Tecnológica
+## Ordem de inicialização
+1) Autenticação (porta 4000)
+2) Backend (porta 3000)
+3) Frontend (porta 5173)
 
-### Backend
-- **Node.js** 18+ - Runtime JavaScript
-- **TypeScript** 5.0+ - Linguagem de programação
-- **Express.js** 4.18+ - Framework web
-- **Prisma ORM** 5.19+ - ORM para banco de dados
-- **MySQL** 8.0 - Banco de dados relacional
-- **Jest** - Framework de testes
-- **Docker** - Containerização
+---
 
-### Banco de Dados
-- **MySQL 8.0** - Sistema de gerenciamento de banco de dados
-- **Prisma** - ORM e migrações
+## 1) Serviço de Autenticação (auvet-autenticacao)
 
-### Infraestrutura
-- **Docker** - Containerização
-- **Docker Compose** - Orquestração de containers
+Pasta: `auvet-autenticacao`
 
-## Pré-requisitos
-
-Antes de começar, certifique-se de ter instalado:
-
-- **Docker** (versão 20.10+)
-- **Docker Compose** (versão 2.0+)
-- **Node.js** (versão 18+) - apenas para desenvolvimento local
-- **Git** - para clonar o repositório
-
-
-##  Instalação
-
-### 1. Clone o Repositório
-
-```bash
-git clone https://github.com/Auvet/auvet-backend
-cd auvet-backend
+Variáveis de ambiente (arquivo `.env`):
+```
+PORT=4000
+DATABASE_URL="mysql://user:pass@host:3306/auvet_auth"
+JWT_SECRET="troque-em-producao"
+JWT_EXPIRATION="24h"
+CORS_ORIGINS="http://localhost:5173"
 ```
 
-### 2. Configuração do Ambiente
-
-Crie um arquivo `.env` baseado no `env.example`:
-
+Rodar em desenvolvimento:
 ```bash
-cp env.example .env
+cd auvet-autenticacao
+npm install
+npm run db:migrate
+npm run dev
 ```
 
-Edite o arquivo `.env` com suas configurações:
-
-```env
-DATABASE_URL="mysql://auvet_user:auvet123@localhost:3307/auvet_db"
-NODE_ENV=development
-PORT=3000
-CORS_ORIGIN=http://localhost:3000
-```
-
-### 3. Executando com Docker (Recomendado)
-
-#### Iniciar a Aplicação
-
+Docker:
 ```bash
+cd auvet-autenticacao
 docker-compose up --build
-
-# Ou executar em background
-docker-compose up -d --build
 ```
 
-#### Verificar se os Serviços Estão Rodando
+URLs úteis:
+- Health: `http://localhost:4000/health`
+- Swagger: `http://localhost:4000/api-docs`
 
+---
+
+## 2) Backend (auvet-backend)
+
+Pasta: `auvet-backend`
+
+Variáveis de ambiente (arquivo `.env`):
+```
+PORT=3000
+DATABASE_URL="mysql://user:pass@host:3306/auvet_backend"
+AUTH_API_URL="http://localhost:4000"
+# Aceitar chamadas do frontend local
+CORS_ORIGINS="http://localhost:5173"
+```
+
+Rodar em desenvolvimento:
 ```bash
-# Ver status dos containers
-docker-compose ps
-
-# Ver logs do backend
-docker-compose logs backend
-
-# Ver logs do MySQL
-docker-compose logs mysql
+cd auvet-backend
+npm install
+npm run db:migrate
+npm run dev
 ```
+
+Docker:
+```bash
+cd auvet-backend
+docker-compose up --build
+```
+
+URLs úteis:
+- Health: `http://localhost:3000/health`
+- Swagger: `http://localhost:3000/api-docs`
+- API base: `http://localhost:3000/api`
+
+Observação: o backend valida JWT consultando o serviço de Autenticação em `AUTH_API_URL`.
+
+---
+
+## 3) Frontend (auvet-frontend)
+
+Pasta: `auvet-frontend`
+
+Configuração de ambientes (`src/config/env.ts`):
+- Em desenvolvimento, o projeto usa proxies do Vite:
+  - `AUTH_API_BASE_URL = /auth-api`
+  - `BACKEND_API_BASE_URL = /backend-api`
+
+Certifique-se de que o `vite.config.*` está configurado com proxies para:
+```
+/auth-api     -> http://localhost:4000/api
+/backend-api  -> http://localhost:3000/api
+```
+
+Rodar em desenvolvimento:
+```bash
+cd auvet-frontend
+npm install
+npm run dev
+```
+
+Build/preview:
+```bash
+npm run build
+npm run preview
+```
+
+URL:
+- App: `http://localhost:5173`
+
+Em produção (sem proxy), o `env.ts` já aponta para as URLs públicas render.com.
+
+---
+
+## Fluxos rápidos (teste manual)
+- Login: usar o frontend (`/login`), que chama `POST /api/auth/login` no serviço de Autenticação via proxy.
+- Rotas protegidas: após login, o frontend envia `Authorization: Bearer <token>` para o Backend.
+- Validação de token no Backend: middleware chama `POST /api/auth/validatetoken` no serviço de Autenticação.
+
+---
+
+## Problemas comuns (Troubleshooting)
+- CORS bloqueando requisições: ver `CORS_ORIGINS` nos dois servidores (4000 e 3000) e incluir `http://localhost:5173`.
+- Banco não conecta: valide `DATABASE_URL` e se o container/serviço MySQL está no ar.
+- Proxy do Vite não funciona: confira `vite.config.*` (targets de `/auth-api` e `/backend-api`) e se os serviços 4000/3000 estão de pé.
+- Swagger não abre: confirme `PORT` e acesse `/api-docs` no serviço correto.
+
+---
+
+## Resumo de comandos
+
+Autenticação:
+```bash
+cd auvet-autenticacao && npm i && npm run db:migrate && npm run dev
+```
+
+Backend:
+```bash
+cd auvet-backend && npm i && npm run db:migrate && npm run dev
+```
+
+Frontend:
+```bash
+cd auvet-frontend && npm i && npm run dev
+```
+
+---
 
 ## Histórico de Versões
 
 | Versão | Data | Autor | Descrição |
 |--------|------|-------|-----------|
-| 1.0.0 | 2025-09-13 | Izabella Alves | Versão inicial do guia de instalação com instruções para Docker e configuração do ambiente |
+| 1.0.0 | 2025-11-16 | Izabella Alves | Guia para subir Autenticação, Backend e Frontend (dev e Docker) |
+
 

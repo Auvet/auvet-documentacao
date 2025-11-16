@@ -69,7 +69,7 @@ O sistema AUVET é composto pelas seguintes classes principais:
 
 O diagrama EER representa a estrutura do banco de dados, mostrando as tabelas, seus atributos e relacionamentos.
 
-![Diagrama EER AUVET](https://github.com/Auvet/auvet-documentacao/blob/master/docs/imagens/er-diagram-auvet.png?raw=true)
+![Diagrama EER AUVET](https://github.com/Auvet/auvet-documentacao/blob/master/docs/imagens/er-diagram-euvet.png?raw=true)
 
 ### Estrutura do Banco de Dados
 
@@ -185,5 +185,5 @@ O diagrama EER mostra a implementação das classes no banco de dados MySQL. As 
 | Versão | Data | Autor | Descrição |
 |--------|------|-------|-----------|
 | 1.0.0 | 2025-09-13 | Izabella Alves | Versão inicial da modelagem com diagramas UML e EER do sistema AUVET |
-| 2.0.0 | 2025-11-12 | Sistema | Atualização da modelagem com estrutura final do banco de dados, incluindo tabelas de relacionamento N:N (funcionario_clinica, tutor_clinica, animal_clinica) e relacionamentos diretos de Consulta e Vacina com Clínica |
+| 2.0.0 | 2025-11-12 | Izabella Alves | Atualização da modelagem com estrutura final do banco de dados, incluindo tabelas de relacionamento N:N (funcionario_clinica, tutor_clinica, animal_clinica) e relacionamentos diretos de Consulta e Vacina com Clínica |
 
